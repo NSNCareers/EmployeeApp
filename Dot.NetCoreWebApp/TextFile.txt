@@ -1,0 +1,1 @@
+﻿"EmployeeDBConnection": "Server=localhost,1433;Database=master;User=sa;Password=reallyStrongPwd123;"
