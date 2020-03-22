@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dot.NetCoreWebApp.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20200322160245_First")]
+    [Migration("20200322165549_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
