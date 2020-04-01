@@ -2,7 +2,7 @@
 
 namespace Dot.NetCoreWebApp.Migrations
 {
-    public partial class First : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,10 +12,11 @@ namespace Dot.NetCoreWebApp.Migrations
                 {
                     EmployeeId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(250)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(250)", maxLength: 10, nullable: false),
                     EmpCode = table.Column<string>(type: "varchar(10)", nullable: true),
-                    Position = table.Column<string>(type: "varchar(100)", nullable: true),
-                    OfficeLocation = table.Column<string>(type: "varchar(100)", nullable: true)
+                    Position = table.Column<string>(type: "varchar(100)", maxLength: 10, nullable: true),
+                    OfficeLocation = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Email = table.Column<string>(maxLength: 15, nullable: true)
                 },
                 constraints: table =>
                 {

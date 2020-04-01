@@ -25,18 +25,24 @@ namespace Dot.NetCoreWebApp.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(15)")
+                        .HasMaxLength(15);
+
                     b.Property<string>("EmpCode")
                         .HasColumnType("varchar(10)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("OfficeLocation")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Position")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("varchar(100)")
+                        .HasMaxLength(10);
 
                     b.HasKey("EmployeeId");
 
