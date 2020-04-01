@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 **********************************************
 **Run SQL Ducker Container**
 **********************************************
@@ -13,3 +14,6 @@ mssql -u sa -p reallyStrongPwd123
 - Remove-Migration
 - Update-Database [Last migration] "To revert to a last migration"
 - script-migration => To generate sql script# DotNetApp
+=======
+# EmployeeApp
+>>>>>>> 6c0ac0d9448680ae52e9de1df4f3d08251c932d8
