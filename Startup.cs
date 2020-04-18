@@ -41,7 +41,7 @@ namespace Dot.NetCoreWebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EmployeeContext context)
         {
             app.UseForwardedHeaders();
 
@@ -56,9 +56,12 @@ namespace Dot.NetCoreWebApp
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            context.Database.Migrate();
 
             app.UseAuthorization();
 
