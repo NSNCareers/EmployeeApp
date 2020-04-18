@@ -38,8 +38,8 @@ pipeline{
 
         stage('Testing Project'){
             steps{
-                echo 'Running unit Dot.NetCoreWebApp.csproj'
-                 sh 'dotnet test'
+                echo 'Running unit Test'
+                 sh 'dotnet test Dot.NetCoreWebApp.csproj'
             }
 
         }
