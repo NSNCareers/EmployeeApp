@@ -38,7 +38,7 @@ pipeline{
         stage('Docker compose build'){
             steps{
                  echo 'Starting docker compose'
-                /* sh "docker-compose build"*/
+                * sh "docker-compose build"*
                  sh "docker-compose up -d"
             }
 
