@@ -23,9 +23,9 @@ services:
     volumes:  
       - ./data/mssql:/var/opt/mssql3  
     ports:  
-      - '1433:1433'  
+      - '1434:1434'  
     expose:  
-      - 1433 
+      - 1434 
     networks:
       - empappNetwork2
       
