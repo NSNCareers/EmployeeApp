@@ -8,7 +8,7 @@ services:
     depends_on:  
       - sqlserverService2 
     networks:
-      - empappNetwork
+      - empappNetwork2
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,7 +27,7 @@ services:
     expose:  
       - 1433 
     networks:
-      - empappNetwork
+      - empappNetwork2
       
   nginx:
     image: nginx:latest
@@ -41,8 +41,8 @@ services:
     ports:
       - "5000:5000" 
     networks:
-      - empappNetwork      
+      - empappNetwork2      
 
 
 networks:
-  empappNetwork: {}      
+  empappNetwork2: {}      
