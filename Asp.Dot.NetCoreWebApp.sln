@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dot.NetCoreWebApp", "Dot.NetCoreWebApp\Dot.NetCoreWebApp.csproj", "{CFD7B72E-3F27-40CE-B54D-D7D1E54FBFC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dot.NetCoreWebApp", "Dot.NetCoreWebApp.csproj", "{CFD7B72E-3F27-40CE-B54D-D7D1E54FBFC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -36,7 +36,7 @@ namespace Dot.NetCoreWebApp.Models
         public string OfficeLocation { get; set; }
 
 
-        [MaxLength(15)]
+        [MaxLength(30)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
     }

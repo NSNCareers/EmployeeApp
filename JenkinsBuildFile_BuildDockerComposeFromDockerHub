@@ -1,0 +1,75 @@
+pipeline{
+   agent { label "slave01" }
+	
+    environment{
+    NAME="Ngwesse Elvis"
+    }
+
+    stages{
+        stage('Checkout from SCM'){
+            steps{
+                echo 'Checking Out from GitHub'
+                echo "NAME = ${env.NAME}"
+            }
+        }
+
+        stage('Restore Solution'){
+            steps{
+                echo 'Restoring Solution'
+                sh "dotnet restore Dot.NetCoreWebApp.sln"
+            }
+        }
+
+        stage('Build Solution'){
+            steps{
+                echo 'Building Solution'
+                 sh 'dotnet build Dot.NetCoreWebApp.sln'
+            }
+        }
+
+        stage('Run Unit Test'){
+            steps{
+                echo 'Running unit tests'
+                 sh 'dotnet test Dot.NetCoreWebApp.csproj'
+            }
+
+        }
+
+        stage('Docker compose build'){
+            steps{
+                 echo 'Starting docker compose'
+                /* sh "docker-compose build"*/
+                 sh "docker-compose -f docker-compose2.yml up -d"
+            }
+
+        }
+	
+	
+	
+	
+        
+    }
+	
+	
+	  post {
+        always {
+             echo 'One way or another, I have finished'
+			       /* sh "docker-compose down -v" */
+                    /*deleteDir()*/
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+        
+    } 
+	
+}
