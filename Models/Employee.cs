@@ -35,7 +35,7 @@ namespace Dot.NetCoreWebApp.Models
         [DisplayName("Office Location")]
         public string OfficeLocation { get; set; }
 
-
+        [Column(TypeName = "varchar(100)")]
         [MaxLength(30)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
