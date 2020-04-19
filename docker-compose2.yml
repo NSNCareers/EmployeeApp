@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   loginapp:
-    image: dockerelvis/testapp:latest  
+    image: dockerelvis/empapp:latest  
     ports:
       - "80"
     restart: always
