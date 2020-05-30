@@ -1,11 +1,11 @@
 pipeline{
 
-    agent { label "slave02" }
+    agent { label "slave01" }
 
     environment{
     NAME="Ngwesse Elvis"
     BuildOutput="./BuildOutput"
-    registry = "dockerelvis/empapp"
+    registry = "dockerelvis/employeeapp"
     registryCredential = 'duckerhub'
     dockerImage = ''
     
