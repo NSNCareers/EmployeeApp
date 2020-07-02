@@ -14,7 +14,7 @@ namespace Dot.NetCoreWebApp.Models
         [Column(TypeName ="nvarchar(250)")]
         [Required(ErrorMessage ="This field is required")]
         [DisplayName("Full Name")]
-        [MaxLength(10)]
+        [MaxLength(30)]
         public string FullName { get; set; }
 
 
@@ -36,6 +36,7 @@ namespace Dot.NetCoreWebApp.Models
         public string OfficeLocation { get; set; }
 
         [Column(TypeName = "varchar(100)")]
+        [DisplayName("Email")]
         [MaxLength(30)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

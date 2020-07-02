@@ -6,22 +6,33 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Dot.NetCoreWebApp.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Dot.NetCoreWebApp.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly EmployeeContext _context;
+        private readonly ILogger<EmployeeController> _logger;
 
-        public EmployeeController(EmployeeContext context)
+        public EmployeeController(EmployeeContext context, ILogger<EmployeeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Employee
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employees.ToListAsync());
+            try
+            {
+                return View(await _context.Employees.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View();
+            }
         }
 
        
@@ -29,13 +40,21 @@ namespace Dot.NetCoreWebApp.Controllers
         // GET: Employee/Create
         public IActionResult AddOrEdit(int id=0)
         {
-            if (id==0)
+            try
             {
-                return View(new Employee());
+                if (id == 0)
+                {
+                    return View(new Employee());
+                }
+                else
+                {
+                    return View(_context.Employees.Find(id));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return View(_context.Employees.Find(id));
+                _logger.LogError(ex.Message);
+                return View();
             }
         }
 
@@ -48,16 +67,25 @@ namespace Dot.NetCoreWebApp.Controllers
       {
             if (ModelState.IsValid)
             {
-                if (employee.EmployeeId==0)
+
+                try
                 {
-                    _context.Add(employee);
+                    if (employee.EmployeeId == 0)
+                    {
+                        _context.Add(employee);
+                    }
+                    else
+                    {
+                        _context.Update(employee);
+                    }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-                else
+                catch (Exception ex)
                 {
-                    _context.Update(employee);
+                    _logger.LogError(ex.Message);
+                    return View();
                 }
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
             return View(employee);
         }
@@ -65,10 +93,18 @@ namespace Dot.NetCoreWebApp.Controllers
         // GET: Employee/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            var emp =await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(emp);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var emp = await _context.Employees.FindAsync(id);
+                _context.Employees.Remove(emp);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return View();
+            }
         }
     }
 }
